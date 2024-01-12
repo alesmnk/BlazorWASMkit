@@ -1,25 +1,25 @@
 ﻿@page "/weather"
 @inject HttpClient Http
 
-<PageTitle>Weather</PageTitle>
+<PageTitle>Počasí</PageTitle>
 
-<h1>Weather</h1>
+<h1>Počasí</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p>Ukázka načtení dat z API serveru.</p>
 
 @if (forecasts == null)
 {
-    <p><em>Loading...</em></p>
+    <p><em>Nahrávám...</em></p>
 }
 else
 {
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>Datum</th>
+                <th>Tepl. (C)</th>
+                <th>Tepl. (F)</th>
+                <th>Souhrn</th>
             </tr>
         </thead>
         <tbody>

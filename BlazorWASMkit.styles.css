@@ -160,6 +160,23 @@ main[b-3d6uyzx2eu] {
         overflow-y: auto;
     }
 }
+/* /Pages/Heater.razor.rz.scp.css */
+.infoboxheaters[b-w3ayszi7sq] {
+    width: 50%;
+}
+
+.infospravceheaters[b-w3ayszi7sq] {
+    background-color: #99ccff;
+    text-align: center;
+}
+/* /Pages/Meters.razor.rz.scp.css */
+.infoboxmeters[b-sd4tyg1i57] {
+    width: 50%;
+}
+.infospravcemeters[b-sd4tyg1i57] {
+    background-color: #6699ff;
+    text-align: center;
+}
 /* /Pages/SVJ548.razor.rz.scp.css */
 .infoboxsvj[b-du5anu981q] {
     width: 50%;

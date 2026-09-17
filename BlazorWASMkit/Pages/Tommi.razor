@@ -1,73 +1,26 @@
 ﻿@page "/svjtommi"
+@inject ContactCatalogService Contacts
+@using static BlazorWASMkit.Services.ContactGroup
 
 <PageTitle>TOMMI</PageTitle>
 <h3>TOMMI</h3>
 
-<div class="infoboxsvj">
-    <div class="infospravcesvj card-body">
+<InfoHeader ContainerClass="infoboxsvj" BodyClass="infospravcesvj card-body" BannerText="Centrální dispečink 24 h" BannerClass="tommi-banner">
     <span class="fw-bold fs-2">TOMMI</span>
-    <br /><span class="text-end fs-6">holding</span>
-    <div style="color:#ffd800; background-color:black">
-            Centrální dispečink 24 h
-            <br /><span class="fw-bold">800 140 140</span>
-    </div>
-     <div>
-            <span class="fw-bold">Sídlo firmy:</span>
-            <br/>Praha 9, U Svobodárny 1110/12 www.tommi.cz
-    </div>
-    </div>
     <br />
-    <div class="card-body">
-        <p class="infospravcesvj card-title">Technik:</p>
-        <ul class="card-text">
-        <li>Tel: 722 951 416</li>
-            <li>Email: <a href="mailto:technik19@tommi.cz">technik19@tommi.cz</a></li>
-        </ul>
+    <span class="text-end fs-6">holding</span>
+    <div>
+        <span class="fw-bold">Sídlo firmy:</span>
+        <br />Praha 9, U Svobodárny 1110/12 www.tommi.cz
     </div>
-    <div class="card-body">
-        <p class="infospravcesvj card-title">Havarijní pohotovost vody, topení, kanalizace:</p>
-        <ul class="card-text">
-        <li>Tel: 800 140 140</li>
-            <li>TOMMI</li>
-        </ul>
-    </div>
-    <div class="card-body">
-        <p class="infospravcesvj card-title">Závady rozvodu vody mimo objekt:</p>
-        <ul class="card-text">
-            <li>Tel: 840 111 112</li>
-            <li>Pražské vodovody a kanalizace</li>
-        </ul>
-    </div>
-    <div class="card-body">
-        <p class="infospravcesvj card-title">Závady na dodávce tepla - pohotovost:</p>
-        <ul class="card-text">
-            <li>Tel: 606 184 973</li>
-            <li>PROHEAT s.r.o.</li>
-        </ul>
-    </div>
-    <div class="card-body">
-        <p class="infospravcesvj card-title">Závady na dodávce elektrické energie:</p>
-        <ul class="card-text">
-            <li>Tel: 800 823 823</li>
-            <li>Pražská energetika a.s.</li>
-        </ul>
-    </div>
-    <div class="card-body">
-        <p class="infospravcesvj card-title">Závady a vyproštění osob z výtahu:</p>
-        <ul class="card-text">
-            <li>Tel: 800 107 525</li>
-            <li>OTIS a.s.</li>
-        </ul>
-    </div>
-    <div class="card-body">
-        <p class="infospravcesvj card-title">Účetnictví a předpis záloh:</p>
-        <ul class="card-text">
-            <li>Tel: 722 951 416, Jirusová</li>
-            <li>Email: <a href="mailto:tereza.jirusova@tommi.cz">tereza.jirusova@tommi.cz</a></li>
-        </ul>
-    </div>
-</div>
+</InfoHeader>
 
-@code {
+<br />
 
-}
+<ContactSection Title="Technik:" TitleCssClass="infospravcesvj" Items="@Contacts.Get(TommiTechnik)" />
+<ContactSection Title="Havarijní pohotovost vody, topení, kanalizace:" TitleCssClass="infospravcesvj" Items="@Contacts.Get(TommiVoda)" />
+<ContactSection Title="Závady rozvodu vody mimo objekt:" TitleCssClass="infospravcesvj" Items="@Contacts.Get(TommiVodaMimoObjekt)" />
+<ContactSection Title="Závady na dodávce tepla - pohotovost:" TitleCssClass="infospravcesvj" Items="@Contacts.Get(TommiTeplo)" />
+<ContactSection Title="Závady na dodávce elektrické energie:" TitleCssClass="infospravcesvj" Items="@Contacts.Get(TommiElektrina)" />
+<ContactSection Title="Závady a vyproštění osob z výtahu:" TitleCssClass="infospravcesvj" Items="@Contacts.Get(TommiVytah)" />
+<ContactSection Title="Účetnictví a předpis záloh:" TitleCssClass="infospravcesvj" Items="@Contacts.Get(TommiUcetnictvi)" />

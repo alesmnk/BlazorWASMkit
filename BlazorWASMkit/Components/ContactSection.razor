@@ -1,0 +1,31 @@
+@using BlazorWASMkit.Components
+
+<div class="card-body">
+    <p class="@TitleCssClass card-title">@Title</p>
+    <ul class="card-text">
+        @foreach (var item in Items)
+        {
+            <li>
+                @if (string.IsNullOrWhiteSpace(item.Href))
+                {
+                    @item.Text
+                }
+                else
+                {
+                    <a href="@item.Href">@item.Text</a>
+                }
+            </li>
+        }
+    </ul>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string TitleCssClass { get; set; } = string.Empty;
+
+    [Parameter]
+    public IReadOnlyList<ContactLink> Items { get; set; } = Array.Empty<ContactLink>();
+}

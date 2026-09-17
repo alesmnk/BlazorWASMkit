@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using BlazorWASMkit.Services;
 
 namespace BlazorWASMkit
 {
@@ -12,6 +13,7 @@ namespace BlazorWASMkit
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped<ContactCatalogService>();
 
             await builder.Build().RunAsync();
         }

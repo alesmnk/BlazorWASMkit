@@ -1,20 +1,16 @@
 ﻿@page "/svj548"
+@inject ContactCatalogService Contacts
+@using static BlazorWASMkit.Services.ContactGroup
+
 <PageTitle>SVJ 548</PageTitle>
 
-<div class="infoboxsvj">
-    <div class="infospravcesvj card-body">
-        <span class="fw-bold fs-2">SVJ 548</span>
-        <div style="color:#ffd800; background-color:black">
-            Předseda SVJ
-        </div>
-        <div>
-            <span><b>Jan Maceček</b></span><br />
-            <span>Email: <a href="mailto:jan.macecek@krit.cz">jan.macecek@krit.cz</a></span><br />
-            <span>Mobil: +420 602 612 216 </span>
-        </div>
+<InfoHeader ContainerClass="infoboxsvj" BodyClass="infospravcesvj card-body" BannerText="Předseda SVJ" BannerClass="svj-banner">
+    <span class="fw-bold fs-2">SVJ 548</span>
+    <div>
+        <span><b>Jan Maceček</b></span>
     </div>
-</div>
+</InfoHeader>
 
-@code {
+<br />
 
-}
+<ContactSection Title="Kontakt:" TitleCssClass="infospravcesvj" Items="@Contacts.Get(Svj548Contacts)" />

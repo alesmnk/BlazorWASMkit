@@ -1,36 +1,30 @@
 ﻿@page "/heater"
+@inject ContactCatalogService Contacts
+@using static BlazorWASMkit.Services.ContactGroup
 
 <PageTitle>Kotelna</PageTitle>
 <h3>Kotelna</h3>
 
-<div class="infoboxheaters">
-    <div class="infospravceheaters card-body">
-        <span class="fw-bold fs-2">PROHEAT s.r.o.</span>
-        <br /><span class="text-end fs-6">holding</span>
-        <div style="color:#99ccff; background-color:black">
-            Centrální dispečink 24 h
-            <br /><span class="fw-bold">800 140 140</span>
-        </div>
-        <div>
-            <span class="fw-bold">Sídlo firmy:</span>
-            <br />Praha 10, Pražská 1430/36
-            <br />https://www.proheat.cz/kontakt/
-        </div>
-    </div>
+<InfoHeader ContainerClass="infoboxheaters" BodyClass="infospravceheaters card-body" BannerText="Centrální dispečink 24 h" BannerClass="heater-banner">
+    <span class="fw-bold fs-2">PROHEAT s.r.o.</span>
     <br />
-    <div class="card-body">
-        <ul class="card-text">
-            <li>Tel: 603 247 682</li>
-        </ul>
+    <span class="text-end fs-6">holding</span>
+    <div>
+        <span class="fw-bold">Sídlo firmy:</span>
+        <br />Praha 10, Pražská 1430/36
+        <br />https://www.proheat.cz/kontakt/
     </div>
-    <div class="card-body">
-        <p class="infospravceheaters card-title">Pohotovost kotelny:</p>
-        <ul class="card-text">
-            <li>Tel: 606 184 973</li>
-        </ul>
-    </div>
+</InfoHeader>
+
+<br />
+
+<div class="card-body">
+    <ul class="card-text">
+        @foreach (var item in Contacts.Get(HeaterGeneral))
+        {
+            <li>@item.Text</li>
+        }
+    </ul>
 </div>
 
-@code {
-
-}
+<ContactSection Title="Pohotovost kotelny:" TitleCssClass="infospravceheaters" Items="@Contacts.Get(HeaterPohotovost)" />

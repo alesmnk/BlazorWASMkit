@@ -1,0 +1,76 @@
+@if (!string.IsNullOrWhiteSpace(ContainerClass))
+{
+    <div class="@ContainerClass">
+        <div class="@BodyClass">
+            @HeaderContent
+        </div>
+    </div>
+}
+else
+{
+    <div class="@BodyClass">
+        @HeaderContent
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string? ContainerClass { get; set; }
+
+    [Parameter]
+    public string BodyClass { get; set; } = "card-body";
+
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string? Subtitle { get; set; }
+
+    [Parameter]
+    public string? BannerText { get; set; }
+
+    [Parameter]
+    public string? BannerClass { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private RenderFragment HeaderContent => builder =>
+    {
+        var sequence = 0;
+
+        if (!string.IsNullOrWhiteSpace(Title))
+        {
+            builder.OpenElement(sequence++, "span");
+            builder.AddAttribute(sequence++, "class", "fw-bold fs-2");
+            builder.AddContent(sequence++, Title);
+            builder.CloseElement();
+        }
+
+        if (!string.IsNullOrWhiteSpace(Subtitle))
+        {
+            builder.AddMarkupContent(sequence++, "<br />");
+            builder.OpenElement(sequence++, "span");
+            builder.AddAttribute(sequence++, "class", "text-end fs-6");
+            builder.AddContent(sequence++, Subtitle);
+            builder.CloseElement();
+        }
+
+        if (!string.IsNullOrWhiteSpace(BannerText))
+        {
+            builder.OpenElement(sequence++, "div");
+            if (!string.IsNullOrWhiteSpace(BannerClass))
+            {
+                builder.AddAttribute(sequence++, "class", BannerClass);
+            }
+
+            builder.AddContent(sequence++, BannerText);
+            builder.CloseElement();
+        }
+
+        if (ChildContent is not null)
+        {
+            builder.AddContent(sequence++, ChildContent);
+        }
+    };
+}

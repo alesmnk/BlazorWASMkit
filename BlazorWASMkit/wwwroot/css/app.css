@@ -57,6 +57,12 @@ a, .btn-link {
 .heater-banner {
     background-color: black;
     color: #99ccff;
+    white-space: nowrap;
+}
+
+.contact-url {
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .meters-banner {

@@ -18,13 +18,5 @@
 
 <br />
 
-<div class="card-body">
-    <ul class="card-text">
-        @foreach (var item in Contacts.Get(HeaterGeneral))
-        {
-            <li>@item.Text</li>
-        }
-    </ul>
-</div>
-
-<ContactSection Title="Pohotovost kotelny:" TitleCssClass="infospravceheaters" Items="@Contacts.Get(HeaterPohotovost)" />
+<ContactSection Title="Kontakt:" TitleCssClass="infospravceheaters" Blocks="@Contacts.Get(HeaterGeneral)" />
+<ContactSection Title="Pohotovost kotelny:" TitleCssClass="infospravceheaters" Blocks="@Contacts.Get(HeaterPohotovost)" />
